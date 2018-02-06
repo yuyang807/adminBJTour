@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yy.bjtours.modules.web.dao.LineDao">
+
+    <sql id="Base_Column_List" >
+         id,line_no, line_name_short, line_name, available, duration, is_private, language, pick_up_point, finish_point, pick_up_time, end_time, phy_level, hiking_dis, hiking_area, attractions, customizable, layover_time, popular_level, line_type_no, detail
+    </sql>
+
+    <insert id="insert" parameterType="com.yy.bjtours.modules.web.dto.TLineDto">
+       INSERT into t_line
+       <trim prefix="(" suffix=")" suffixOverrides="," >
+        <if test="lineNo != null ">
+          line_no,
+        </if>
+        <if test="lineNameShort != null ">
+          line_name_short,
+        </if>
+        <if test="lineName != null ">
+          line_name,
+        </if>
+        <if test="available != null ">
+          available,
+        </if>
+        <if test="duration != null ">
+          duration,
+        </if>
+        <if test="isPrivate != null ">
+          is_private,
+        </if>
+        <if test="language != null ">
+          language,
+        </if>
+        <if test="pickUpPoint != null ">
+          pick_up_point,
+        </if>
+        <if test="finishPoint != null ">
+          finish_point,
+        </if>
+        <if test="pickUpTime != null ">
+          pick_up_time,
+        </if>
+        <if test="endTime != null ">
+          end_time,
+        </if>
+        <if test="phyLevel != null ">
+          phy_level,
+        </if>
+        <if test="hikingDis != null ">
+          hiking_dis,
+        </if>
+        <if test="hikingArea != null ">
+          hiking_area,
+        </if>
+        <if test="attractions != null ">
+          attractions,
+        </if>
+        <if test="customizable != null ">
+          customizable,
+        </if>
+        <if test="layoverTime != null ">
+          layover_time,
+        </if>
+        <if test="popularLevel != null ">
+          popular_level,
+        </if>
+        <if test="lineTypeNo != null ">
+          line_type_no,
+        </if>
+        <if test="detail != null ">
+          detail,
+        </if>
+       </trim>
+       <trim prefix="values (" suffix=")" suffixOverrides="," >
+        <if test="lineNo != null ">
+          #{lineNo},
+        </if>
+        <if test="lineNameShort != null ">
+          #{lineNameShort},
+        </if>
+        <if test="lineName != null ">
+          #{lineName},
+        </if>
+        <if test="available != null ">
+          #{available},
+        </if>
+        <if test="duration != null ">
+          #{duration},
+        </if>
+        <if test="isPrivate != null ">
+          #{isPrivate},
+        </if>
+        <if test="language != null ">
+          #{language},
+        </if>
+        <if test="pickUpPoint != null ">
+          #{pickUpPoint},
+        </if>
+        <if test="finishPoint != null ">
+          #{finishPoint},
+        </if>
+        <if test="pickUpTime != null ">
+          #{pickUpTime},
+        </if>
+        <if test="endTime != null ">
+          #{endTime},
+        </if>
+        <if test="phyLevel != null ">
+          #{phyLevel},
+        </if>
+        <if test="hikingDis != null ">
+          #{hikingDis},
+        </if>
+        <if test="hikingArea != null ">
+          #{hikingArea},
+        </if>
+        <if test="attractions != null ">
+          #{attractions},
+        </if>
+        <if test="customizable != null ">
+          #{customizable},
+        </if>
+        <if test="layoverTime != null ">
+          #{layoverTime},
+        </if>
+        <if test="popularLevel != null ">
+          #{popularLevel},
+        </if>
+        <if test="lineTypeNo != null ">
+          #{lineTypeNo},
+        </if>
+        <if test="detail != null ">
+          #{detail},
+        </if>
+       </trim>
+    </insert>
+
+    <delete id="deleteByPrimaryKey" parameterType="com.yy.bjtours.modules.web.dto.TLineDto">
+       DELETE FROM t_line WHERE id = #{id};
+    </delete>
+
+    <delete id="delete" parameterType="com.yy.bjtours.modules.web.dto.TLineDto">
+       DELETE FROM t_line WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="lineNo != null ">
+          line_no = #{lineNo} AND
+        </if>
+        <if test="lineNameShort != null ">
+          line_name_short = #{lineNameShort} AND
+        </if>
+        <if test="lineName != null ">
+          line_name = #{lineName} AND
+        </if>
+        <if test="available != null ">
+          available = #{available} AND
+        </if>
+        <if test="duration != null ">
+          duration = #{duration} AND
+        </if>
+        <if test="isPrivate != null ">
+          is_private = #{isPrivate} AND
+        </if>
+        <if test="language != null ">
+          language = #{language} AND
+        </if>
+        <if test="pickUpPoint != null ">
+          pick_up_point = #{pickUpPoint} AND
+        </if>
+        <if test="finishPoint != null ">
+          finish_point = #{finishPoint} AND
+        </if>
+        <if test="pickUpTime != null ">
+          pick_up_time = #{pickUpTime} AND
+        </if>
+        <if test="endTime != null ">
+          end_time = #{endTime} AND
+        </if>
+        <if test="phyLevel != null ">
+          phy_level = #{phyLevel} AND
+        </if>
+        <if test="hikingDis != null ">
+          hiking_dis = #{hikingDis} AND
+        </if>
+        <if test="hikingArea != null ">
+          hiking_area = #{hikingArea} AND
+        </if>
+        <if test="attractions != null ">
+          attractions = #{attractions} AND
+        </if>
+        <if test="customizable != null ">
+          customizable = #{customizable} AND
+        </if>
+        <if test="layoverTime != null ">
+          layover_time = #{layoverTime} AND
+        </if>
+        <if test="popularLevel != null ">
+          popular_level = #{popularLevel} AND
+        </if>
+        <if test="lineTypeNo != null ">
+          line_type_no = #{lineTypeNo} AND
+        </if>
+        <if test="detail != null ">
+          detail = #{detail} AND
+        </if>
+       </trim>
+    </delete>
+
+    <update id="update" parameterType="com.yy.bjtours.modules.web.dto.TLineDto">
+       UPDATE t_line
+       <trim prefix="SET" suffixOverrides=",">
+        <if test="lineNo != null ">
+          line_no = #{lineNo} ,
+        </if>
+        <if test="lineNameShort != null ">
+          line_name_short = #{lineNameShort} ,
+        </if>
+        <if test="lineName != null ">
+          line_name = #{lineName} ,
+        </if>
+        <if test="available != null ">
+          available = #{available} ,
+        </if>
+        <if test="duration != null ">
+          duration = #{duration} ,
+        </if>
+        <if test="isPrivate != null ">
+          is_private = #{isPrivate} ,
+        </if>
+        <if test="language != null ">
+          language = #{language} ,
+        </if>
+        <if test="pickUpPoint != null ">
+          pick_up_point = #{pickUpPoint} ,
+        </if>
+        <if test="finishPoint != null ">
+          finish_point = #{finishPoint} ,
+        </if>
+        <if test="pickUpTime != null ">
+          pick_up_time = #{pickUpTime} ,
+        </if>
+        <if test="endTime != null ">
+          end_time = #{endTime} ,
+        </if>
+        <if test="phyLevel != null ">
+          phy_level = #{phyLevel} ,
+        </if>
+        <if test="hikingDis != null ">
+          hiking_dis = #{hikingDis} ,
+        </if>
+        <if test="hikingArea != null ">
+          hiking_area = #{hikingArea} ,
+        </if>
+        <if test="attractions != null ">
+          attractions = #{attractions} ,
+        </if>
+        <if test="customizable != null ">
+          customizable = #{customizable} ,
+        </if>
+        <if test="layoverTime != null ">
+          layover_time = #{layoverTime} ,
+        </if>
+        <if test="popularLevel != null ">
+          popular_level = #{popularLevel} ,
+        </if>
+        <if test="lineTypeNo != null ">
+          line_type_no = #{lineTypeNo} ,
+        </if>
+        <if test="detail != null ">
+          detail = #{detail} ,
+        </if>
+       </trim>
+       WHERE id = #{id}
+    </update>
+
+    <select id="get" parameterType="com.yy.bjtours.modules.web.dto.TLineDto" resultType="TLineDto">
+       SELECT <include refid="Base_Column_List" />
+       FROM t_line
+       WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="lineNo != null ">
+          line_no = #{lineNo} AND
+        </if>
+        <if test="lineNameShort != null ">
+          line_name_short = #{lineNameShort} AND
+        </if>
+        <if test="lineName != null ">
+          line_name = #{lineName} AND
+        </if>
+        <if test="available != null ">
+          available = #{available} AND
+        </if>
+        <if test="duration != null ">
+          duration = #{duration} AND
+        </if>
+        <if test="isPrivate != null ">
+          is_private = #{isPrivate} AND
+        </if>
+        <if test="language != null ">
+          language = #{language} AND
+        </if>
+        <if test="pickUpPoint != null ">
+          pick_up_point = #{pickUpPoint} AND
+        </if>
+        <if test="finishPoint != null ">
+          finish_point = #{finishPoint} AND
+        </if>
+        <if test="pickUpTime != null ">
+          pick_up_time = #{pickUpTime} AND
+        </if>
+        <if test="endTime != null ">
+          end_time = #{endTime} AND
+        </if>
+        <if test="phyLevel != null ">
+          phy_level = #{phyLevel} AND
+        </if>
+        <if test="hikingDis != null ">
+          hiking_dis = #{hikingDis} AND
+        </if>
+        <if test="hikingArea != null ">
+          hiking_area = #{hikingArea} AND
+        </if>
+        <if test="attractions != null ">
+          attractions = #{attractions} AND
+        </if>
+        <if test="customizable != null ">
+          customizable = #{customizable} AND
+        </if>
+        <if test="layoverTime != null ">
+          layover_time = #{layoverTime} AND
+        </if>
+        <if test="popularLevel != null ">
+          popular_level = #{popularLevel} AND
+        </if>
+        <if test="lineTypeNo != null ">
+          line_type_no = #{lineTypeNo} AND
+        </if>
+        <if test="detail != null ">
+          detail = #{detail} AND
+        </if>
+       </trim>
+       <if test="orderByStr != null">
+       order by ${orderByStr}
+       </if>
+    </select>
+    <select id="count" parameterType="com.yy.bjtours.modules.web.dto.TLineDto" resultType="java.lang.Long">
+       SELECT count(*) FROM t_line
+       WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="lineNo != null ">
+          line_no = #{lineNo} AND
+        </if>
+        <if test="lineNameShort != null ">
+          line_name_short = #{lineNameShort} AND
+        </if>
+        <if test="lineName != null ">
+          line_name = #{lineName} AND
+        </if>
+        <if test="available != null ">
+          available = #{available} AND
+        </if>
+        <if test="duration != null ">
+          duration = #{duration} AND
+        </if>
+        <if test="isPrivate != null ">
+          is_private = #{isPrivate} AND
+        </if>
+        <if test="language != null ">
+          language = #{language} AND
+        </if>
+        <if test="pickUpPoint != null ">
+          pick_up_point = #{pickUpPoint} AND
+        </if>
+        <if test="finishPoint != null ">
+          finish_point = #{finishPoint} AND
+        </if>
+        <if test="pickUpTime != null ">
+          pick_up_time = #{pickUpTime} AND
+        </if>
+        <if test="endTime != null ">
+          end_time = #{endTime} AND
+        </if>
+        <if test="phyLevel != null ">
+          phy_level = #{phyLevel} AND
+        </if>
+        <if test="hikingDis != null ">
+          hiking_dis = #{hikingDis} AND
+        </if>
+        <if test="hikingArea != null ">
+          hiking_area = #{hikingArea} AND
+        </if>
+        <if test="attractions != null ">
+          attractions = #{attractions} AND
+        </if>
+        <if test="customizable != null ">
+          customizable = #{customizable} AND
+        </if>
+        <if test="layoverTime != null ">
+          layover_time = #{layoverTime} AND
+        </if>
+        <if test="popularLevel != null ">
+          popular_level = #{popularLevel} AND
+        </if>
+        <if test="lineTypeNo != null ">
+          line_type_no = #{lineTypeNo} AND
+        </if>
+        <if test="detail != null ">
+          detail = #{detail} AND
+        </if>
+       </trim>
+    </select>
+<!-- ##############################################自定义sql分界线##################################################################### -->
+
+	<select id="findList" parameterType="com.yy.bjtours.modules.web.dto.TLineDto" resultType="TLineDto">
+		select <include refid="Base_Column_List" /> FROM t_line 
+		<trim prefix="WHERE" prefixOverrides="AND">
+			<if test="lineNo != null ">
+	          line_no = #{lineNo} AND
+	        </if>
+	        <if test="lineNameShort != null ">
+	          line_name_short = #{lineNameShort} AND
+	        </if>
+	        <if test="lineName != null ">
+	          line_name = #{lineName} AND
+	        </if>
+	        <if test="available != null ">
+	          available = #{available} AND
+	        </if>
+	        <if test="duration != null ">
+	          duration = #{duration} AND
+	        </if>
+	        <if test="isPrivate != null ">
+	          is_private = #{isPrivate} AND
+	        </if>
+	        <if test="language != null ">
+	          language = #{language} AND
+	        </if>
+	        <if test="pickUpPoint != null ">
+	          pick_up_point = #{pickUpPoint} AND
+	        </if>
+	        <if test="finishPoint != null ">
+	          finish_point = #{finishPoint} AND
+	        </if>
+	        <if test="pickUpTime != null ">
+	          pick_up_time = #{pickUpTime} AND
+	        </if>
+	        <if test="endTime != null ">
+	          end_time = #{endTime} AND
+	        </if>
+	        <if test="phyLevel != null ">
+	          phy_level = #{phyLevel} AND
+	        </if>
+	        <if test="hikingDis != null ">
+	          hiking_dis = #{hikingDis} AND
+	        </if>
+	        <if test="hikingArea != null ">
+	          hiking_area = #{hikingArea} AND
+	        </if>
+	        <if test="attractions != null ">
+	          attractions = #{attractions} AND
+	        </if>
+	        <if test="customizable != null ">
+	          customizable = #{customizable} AND
+	        </if>
+	        <if test="layoverTime != null ">
+	          layover_time = #{layoverTime} AND
+	        </if>
+	        <if test="popularLevel != null ">
+	          popular_level = #{popularLevel} AND
+	        </if>
+	        <if test="lineTypeNo != null ">
+	          line_type_no = #{lineTypeNo} AND
+	        </if>
+		</trim>
+	</select>
+	
+	<select id="findList-count" parameterType="com.yy.bjtours.modules.web.dto.TLineDto" resultType="long">
+		select count(*) FROM t_line 
+		<trim prefix="WHERE" prefixOverrides="AND">
+			<if test="lineNo != null ">
+	          line_no = #{lineNo} AND
+	        </if>
+	        <if test="lineNameShort != null ">
+	          line_name_short = #{lineNameShort} AND
+	        </if>
+	        <if test="lineName != null ">
+	          line_name = #{lineName} AND
+	        </if>
+	        <if test="available != null ">
+	          available = #{available} AND
+	        </if>
+	        <if test="duration != null ">
+	          duration = #{duration} AND
+	        </if>
+	        <if test="isPrivate != null ">
+	          is_private = #{isPrivate} AND
+	        </if>
+	        <if test="language != null ">
+	          language = #{language} AND
+	        </if>
+	        <if test="pickUpPoint != null ">
+	          pick_up_point = #{pickUpPoint} AND
+	        </if>
+	        <if test="finishPoint != null ">
+	          finish_point = #{finishPoint} AND
+	        </if>
+	        <if test="pickUpTime != null ">
+	          pick_up_time = #{pickUpTime} AND
+	        </if>
+	        <if test="endTime != null ">
+	          end_time = #{endTime} AND
+	        </if>
+	        <if test="phyLevel != null ">
+	          phy_level = #{phyLevel} AND
+	        </if>
+	        <if test="hikingDis != null ">
+	          hiking_dis = #{hikingDis} AND
+	        </if>
+	        <if test="hikingArea != null ">
+	          hiking_area = #{hikingArea} AND
+	        </if>
+	        <if test="attractions != null ">
+	          attractions = #{attractions} AND
+	        </if>
+	        <if test="customizable != null ">
+	          customizable = #{customizable} AND
+	        </if>
+	        <if test="layoverTime != null ">
+	          layover_time = #{layoverTime} AND
+	        </if>
+	        <if test="popularLevel != null ">
+	          popular_level = #{popularLevel} AND
+	        </if>
+	        <if test="lineTypeNo != null ">
+	          line_type_no = #{lineTypeNo} AND
+	        </if>
+		</trim>
+	</select>
+	
+	<select id="getLineVo" parameterType="long" resultType="TLineDtoVo">
+		select <include refid="Base_Column_List" />,type_name FROM t_line left join t_linekind 
+		on line_type_no = type_no
+		where line_no=#{lineNo}
+	</select>
+	
+	<select id="getNewNo" resultType="long">
+    	select max(line_no)+1 from t_line
+    </select>
+</mapper>

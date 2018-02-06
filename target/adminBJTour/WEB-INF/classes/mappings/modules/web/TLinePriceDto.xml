@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yy.bjtours.modules.web.dao.PriceDao">
+
+    <sql id="Base_Column_List" >
+         id,line_no, one_p, two_p, three_p, four_p, five_p, six_p, seven_p, eight_p, nine_p, ten_p
+    </sql>
+
+    <insert id="insert" parameterType="com.yy.bjtours.modules.web.dto.TLinePriceDto">
+       INSERT into t_line_price
+       <trim prefix="(" suffix=")" suffixOverrides="," >
+        <if test="lineNo != null ">
+          line_no,
+        </if>
+        <if test="oneP != null ">
+          one_p,
+        </if>
+        <if test="twoP != null ">
+          two_p,
+        </if>
+        <if test="threeP != null ">
+          three_p,
+        </if>
+        <if test="fourP != null ">
+          four_p,
+        </if>
+        <if test="fiveP != null ">
+          five_p,
+        </if>
+        <if test="sixP != null ">
+          six_p,
+        </if>
+        <if test="sevenP != null ">
+          seven_p,
+        </if>
+        <if test="eightP != null ">
+          eight_p,
+        </if>
+        <if test="nineP != null ">
+          nine_p,
+        </if>
+        <if test="tenP != null ">
+          ten_p,
+        </if>
+       </trim>
+       <trim prefix="values (" suffix=")" suffixOverrides="," >
+        <if test="lineNo != null ">
+          #{lineNo},
+        </if>
+        <if test="oneP != null ">
+          #{oneP},
+        </if>
+        <if test="twoP != null ">
+          #{twoP},
+        </if>
+        <if test="threeP != null ">
+          #{threeP},
+        </if>
+        <if test="fourP != null ">
+          #{fourP},
+        </if>
+        <if test="fiveP != null ">
+          #{fiveP},
+        </if>
+        <if test="sixP != null ">
+          #{sixP},
+        </if>
+        <if test="sevenP != null ">
+          #{sevenP},
+        </if>
+        <if test="eightP != null ">
+          #{eightP},
+        </if>
+        <if test="nineP != null ">
+          #{nineP},
+        </if>
+        <if test="tenP != null ">
+          #{tenP},
+        </if>
+       </trim>
+    </insert>
+
+    <delete id="deleteByPrimaryKey" parameterType="com.yy.bjtours.modules.web.dto.TLinePriceDto">
+       DELETE FROM t_line_price WHERE id = #{id};
+    </delete>
+
+    <delete id="delete" parameterType="com.yy.bjtours.modules.web.dto.TLinePriceDto">
+       DELETE FROM t_line_price WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="lineNo != null ">
+          line_no = #{lineNo} AND
+        </if>
+        <if test="oneP != null ">
+          one_p = #{oneP} AND
+        </if>
+        <if test="twoP != null ">
+          two_p = #{twoP} AND
+        </if>
+        <if test="threeP != null ">
+          three_p = #{threeP} AND
+        </if>
+        <if test="fourP != null ">
+          four_p = #{fourP} AND
+        </if>
+        <if test="fiveP != null ">
+          five_p = #{fiveP} AND
+        </if>
+        <if test="sixP != null ">
+          six_p = #{sixP} AND
+        </if>
+        <if test="sevenP != null ">
+          seven_p = #{sevenP} AND
+        </if>
+        <if test="eightP != null ">
+          eight_p = #{eightP} AND
+        </if>
+        <if test="nineP != null ">
+          nine_p = #{nineP} AND
+        </if>
+        <if test="tenP != null ">
+          ten_p = #{tenP} AND
+        </if>
+       </trim>
+    </delete>
+
+    <update id="update" parameterType="com.yy.bjtours.modules.web.dto.TLinePriceDto">
+       UPDATE t_line_price
+       <trim prefix="SET" suffixOverrides=",">
+        <if test="lineNo != null ">
+          line_no = #{lineNo} ,
+        </if>
+        <if test="oneP != null ">
+          one_p = #{oneP} ,
+        </if>
+        <if test="twoP != null ">
+          two_p = #{twoP} ,
+        </if>
+        <if test="threeP != null ">
+          three_p = #{threeP} ,
+        </if>
+        <if test="fourP != null ">
+          four_p = #{fourP} ,
+        </if>
+        <if test="fiveP != null ">
+          five_p = #{fiveP} ,
+        </if>
+        <if test="sixP != null ">
+          six_p = #{sixP} ,
+        </if>
+        <if test="sevenP != null ">
+          seven_p = #{sevenP} ,
+        </if>
+        <if test="eightP != null ">
+          eight_p = #{eightP} ,
+        </if>
+        <if test="nineP != null ">
+          nine_p = #{nineP} ,
+        </if>
+        <if test="tenP != null ">
+          ten_p = #{tenP} ,
+        </if>
+       </trim>
+       WHERE id = #{id}
+    </update>
+
+    <select id="get" parameterType="com.yy.bjtours.modules.web.dto.TLinePriceDto" resultType="TLinePriceDto">
+       SELECT <include refid="Base_Column_List" />
+       FROM t_line_price
+       WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="lineNo != null ">
+          line_no = #{lineNo} AND
+        </if>
+        <if test="oneP != null ">
+          one_p = #{oneP} AND
+        </if>
+        <if test="twoP != null ">
+          two_p = #{twoP} AND
+        </if>
+        <if test="threeP != null ">
+          three_p = #{threeP} AND
+        </if>
+        <if test="fourP != null ">
+          four_p = #{fourP} AND
+        </if>
+        <if test="fiveP != null ">
+          five_p = #{fiveP} AND
+        </if>
+        <if test="sixP != null ">
+          six_p = #{sixP} AND
+        </if>
+        <if test="sevenP != null ">
+          seven_p = #{sevenP} AND
+        </if>
+        <if test="eightP != null ">
+          eight_p = #{eightP} AND
+        </if>
+        <if test="nineP != null ">
+          nine_p = #{nineP} AND
+        </if>
+        <if test="tenP != null ">
+          ten_p = #{tenP} AND
+        </if>
+       </trim>
+       <if test="orderByStr != null">
+       order by ${orderByStr}
+       </if>
+    </select>
+    <select id="count" parameterType="com.yy.bjtours.modules.web.dto.TLinePriceDto" resultType="java.lang.Long">
+       SELECT count(*) FROM t_line_price
+       WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="lineNo != null ">
+          line_no = #{lineNo} AND
+        </if>
+        <if test="oneP != null ">
+          one_p = #{oneP} AND
+        </if>
+        <if test="twoP != null ">
+          two_p = #{twoP} AND
+        </if>
+        <if test="threeP != null ">
+          three_p = #{threeP} AND
+        </if>
+        <if test="fourP != null ">
+          four_p = #{fourP} AND
+        </if>
+        <if test="fiveP != null ">
+          five_p = #{fiveP} AND
+        </if>
+        <if test="sixP != null ">
+          six_p = #{sixP} AND
+        </if>
+        <if test="sevenP != null ">
+          seven_p = #{sevenP} AND
+        </if>
+        <if test="eightP != null ">
+          eight_p = #{eightP} AND
+        </if>
+        <if test="nineP != null ">
+          nine_p = #{nineP} AND
+        </if>
+        <if test="tenP != null ">
+          ten_p = #{tenP} AND
+        </if>
+       </trim>
+    </select>
+<!-- ##############################################自定义sql分界线##################################################################### -->
+</mapper>

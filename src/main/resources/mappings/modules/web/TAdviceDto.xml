@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yy.bjtours.modules.web.dto.TAdviceDto">
+
+    <sql id="Base_Column_List" >
+         email_address, f_name, l_name, content, ip1, ip2, ip3, ip4, is_inform, lineno, know_way, referral_name, create_date
+    </sql>
+
+    <insert id="insert" parameterType="com.yy.bjtours.modules.web.dto.TAdviceDto">
+       INSERT into t_advice
+       <trim prefix="(" suffix=")" suffixOverrides="," >
+        <if test="emailAddress != null ">
+          email_address,
+        </if>
+        <if test="fName != null ">
+          f_name,
+        </if>
+        <if test="lName != null ">
+          l_name,
+        </if>
+        <if test="content != null ">
+          content,
+        </if>
+        <if test="ip1 != null ">
+          ip1,
+        </if>
+        <if test="ip2 != null ">
+          ip2,
+        </if>
+        <if test="ip3 != null ">
+          ip3,
+        </if>
+        <if test="ip4 != null ">
+          ip4,
+        </if>
+        <if test="isInform != null ">
+          is_inform,
+        </if>
+        <if test="lineno != null ">
+          lineno,
+        </if>
+        <if test="knowWay != null ">
+          know_way,
+        </if>
+        <if test="referralName != null ">
+          referral_name,
+        </if>
+        <if test="createDate != null ">
+          create_date,
+        </if>
+       </trim>
+       <trim prefix="values (" suffix=")" suffixOverrides="," >
+        <if test="emailAddress != null ">
+          #{emailAddress},
+        </if>
+        <if test="fName != null ">
+          #{fName},
+        </if>
+        <if test="lName != null ">
+          #{lName},
+        </if>
+        <if test="content != null ">
+          #{content},
+        </if>
+        <if test="ip1 != null ">
+          #{ip1},
+        </if>
+        <if test="ip2 != null ">
+          #{ip2},
+        </if>
+        <if test="ip3 != null ">
+          #{ip3},
+        </if>
+        <if test="ip4 != null ">
+          #{ip4},
+        </if>
+        <if test="isInform != null ">
+          #{isInform},
+        </if>
+        <if test="lineno != null ">
+          #{lineno},
+        </if>
+        <if test="knowWay != null ">
+          #{knowWay},
+        </if>
+        <if test="referralName != null ">
+          #{referralName},
+        </if>
+        <if test="createDate != null ">
+          #{createDate},
+        </if>
+       </trim>
+    </insert>
+
+    <delete id="deleteByPrimaryKey" parameterType="com.yy.bjtours.modules.web.dto.TAdviceDto">
+       DELETE FROM t_advice WHERE id = #{id};
+    </delete>
+
+    <delete id="delete" parameterType="com.yy.bjtours.modules.web.dto.TAdviceDto">
+       DELETE FROM t_advice WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="emailAddress != null ">
+          email_address = #{emailAddress} AND
+        </if>
+        <if test="fName != null ">
+          f_name = #{fName} AND
+        </if>
+        <if test="lName != null ">
+          l_name = #{lName} AND
+        </if>
+        <if test="content != null ">
+          content = #{content} AND
+        </if>
+        <if test="ip1 != null ">
+          ip1 = #{ip1} AND
+        </if>
+        <if test="ip2 != null ">
+          ip2 = #{ip2} AND
+        </if>
+        <if test="ip3 != null ">
+          ip3 = #{ip3} AND
+        </if>
+        <if test="ip4 != null ">
+          ip4 = #{ip4} AND
+        </if>
+        <if test="isInform != null ">
+          is_inform = #{isInform} AND
+        </if>
+        <if test="lineno != null ">
+          lineno = #{lineno} AND
+        </if>
+        <if test="knowWay != null ">
+          know_way = #{knowWay} AND
+        </if>
+        <if test="referralName != null ">
+          referral_name = #{referralName} AND
+        </if>
+        <if test="createDate != null ">
+          create_date = #{createDate} AND
+        </if>
+        <if test="startCreateDate != null ">
+          create_date >= #{startCreateDate} AND
+        </if>
+        <if test="endCreateDate != null ">
+          create_date <![CDATA[<=]]> #{endCreateDate} AND
+        </if>
+       </trim>
+    </delete>
+
+    <update id="update" parameterType="com.yy.bjtours.modules.web.dto.TAdviceDto">
+       UPDATE t_advice
+       <trim prefix="SET" suffixOverrides=",">
+        <if test="emailAddress != null ">
+          email_address = #{emailAddress} ,
+        </if>
+        <if test="fName != null ">
+          f_name = #{fName} ,
+        </if>
+        <if test="lName != null ">
+          l_name = #{lName} ,
+        </if>
+        <if test="content != null ">
+          content = #{content} ,
+        </if>
+        <if test="ip1 != null ">
+          ip1 = #{ip1} ,
+        </if>
+        <if test="ip2 != null ">
+          ip2 = #{ip2} ,
+        </if>
+        <if test="ip3 != null ">
+          ip3 = #{ip3} ,
+        </if>
+        <if test="ip4 != null ">
+          ip4 = #{ip4} ,
+        </if>
+        <if test="isInform != null ">
+          is_inform = #{isInform} ,
+        </if>
+        <if test="lineno != null ">
+          lineno = #{lineno} ,
+        </if>
+        <if test="knowWay != null ">
+          know_way = #{knowWay} ,
+        </if>
+        <if test="referralName != null ">
+          referral_name = #{referralName} ,
+        </if>
+        <if test="createDate != null ">
+          create_date = #{createDate} ,
+        </if>
+        update_date=current_timestamp(),
+       </trim>
+       WHERE id = #{id}
+       <if test="updateDate != null" >
+          AND update_date = #{updateDate}
+       </if>
+    </update>
+
+    <select id="query" parameterType="com.yy.bjtours.modules.web.dto.TAdviceDto" resultType="TAdviceDto">
+       SELECT <include refid="Base_Column_List" />
+       FROM t_advice
+       WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="emailAddress != null ">
+          email_address = #{emailAddress} AND
+        </if>
+        <if test="fName != null ">
+          f_name = #{fName} AND
+        </if>
+        <if test="lName != null ">
+          l_name = #{lName} AND
+        </if>
+        <if test="content != null ">
+          content = #{content} AND
+        </if>
+        <if test="ip1 != null ">
+          ip1 = #{ip1} AND
+        </if>
+        <if test="ip2 != null ">
+          ip2 = #{ip2} AND
+        </if>
+        <if test="ip3 != null ">
+          ip3 = #{ip3} AND
+        </if>
+        <if test="ip4 != null ">
+          ip4 = #{ip4} AND
+        </if>
+        <if test="isInform != null ">
+          is_inform = #{isInform} AND
+        </if>
+        <if test="lineno != null ">
+          lineno = #{lineno} AND
+        </if>
+        <if test="knowWay != null ">
+          know_way = #{knowWay} AND
+        </if>
+        <if test="referralName != null ">
+          referral_name = #{referralName} AND
+        </if>
+        <if test="createDate != null ">
+          create_date = #{createDate} AND
+        </if>
+        <if test="startCreateDate != null ">
+          create_date >= #{startCreateDate} AND
+        </if>
+        <if test="endCreateDate != null ">
+          create_date <![CDATA[<=]]> #{endCreateDate} AND
+        </if>
+       </trim>
+       <if test="orderByStr != null">
+       order by ${orderByStr}
+       </if>
+    </select>
+    <select id="count" parameterType="com.yy.bjtours.modules.web.dto.TAdviceDto" resultType="java.lang.Long">
+       SELECT count(*) FROM t_advice
+       WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="emailAddress != null ">
+          email_address = #{emailAddress} AND
+        </if>
+        <if test="fName != null ">
+          f_name = #{fName} AND
+        </if>
+        <if test="lName != null ">
+          l_name = #{lName} AND
+        </if>
+        <if test="content != null ">
+          content = #{content} AND
+        </if>
+        <if test="ip1 != null ">
+          ip1 = #{ip1} AND
+        </if>
+        <if test="ip2 != null ">
+          ip2 = #{ip2} AND
+        </if>
+        <if test="ip3 != null ">
+          ip3 = #{ip3} AND
+        </if>
+        <if test="ip4 != null ">
+          ip4 = #{ip4} AND
+        </if>
+        <if test="isInform != null ">
+          is_inform = #{isInform} AND
+        </if>
+        <if test="lineno != null ">
+          lineno = #{lineno} AND
+        </if>
+        <if test="knowWay != null ">
+          know_way = #{knowWay} AND
+        </if>
+        <if test="referralName != null ">
+          referral_name = #{referralName} AND
+        </if>
+        <if test="createDate != null ">
+          create_date = #{createDate} AND
+        </if>
+        <if test="startCreateDate != null ">
+          create_date >= #{startCreateDate} AND
+        </if>
+        <if test="endCreateDate != null ">
+          create_date <![CDATA[<=]]> #{endCreateDate} AND
+        </if>
+       </trim>
+    </select>
+<!-- ##############################################自定义sql分界线##################################################################### -->
+</mapper>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yy.bjtours.modules.web.dto.TGuideDto">
+
+    <sql id="Base_Column_List" >
+         guide_no, service_name, service_duration, customizable, price, introduction
+    </sql>
+
+    <insert id="insert" parameterType="com.yy.bjtours.modules.web.dto.TGuideDto">
+       INSERT into t_guide
+       <trim prefix="(" suffix=")" suffixOverrides="," >
+        <if test="guideNo != null ">
+          guide_no,
+        </if>
+        <if test="serviceName != null ">
+          service_name,
+        </if>
+        <if test="serviceDuration != null ">
+          service_duration,
+        </if>
+        <if test="customizable != null ">
+          customizable,
+        </if>
+        <if test="price != null ">
+          price,
+        </if>
+        <if test="introduction != null ">
+          introduction,
+        </if>
+       </trim>
+       <trim prefix="values (" suffix=")" suffixOverrides="," >
+        <if test="guideNo != null ">
+          #{guideNo},
+        </if>
+        <if test="serviceName != null ">
+          #{serviceName},
+        </if>
+        <if test="serviceDuration != null ">
+          #{serviceDuration},
+        </if>
+        <if test="customizable != null ">
+          #{customizable},
+        </if>
+        <if test="price != null ">
+          #{price},
+        </if>
+        <if test="introduction != null ">
+          #{introduction},
+        </if>
+       </trim>
+    </insert>
+
+    <delete id="deleteByPrimaryKey" parameterType="com.yy.bjtours.modules.web.dto.TGuideDto">
+       DELETE FROM t_guide WHERE id = #{id};
+    </delete>
+
+    <delete id="delete" parameterType="com.yy.bjtours.modules.web.dto.TGuideDto">
+       DELETE FROM t_guide WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="guideNo != null ">
+          guide_no = #{guideNo} AND
+        </if>
+        <if test="serviceName != null ">
+          service_name = #{serviceName} AND
+        </if>
+        <if test="serviceDuration != null ">
+          service_duration = #{serviceDuration} AND
+        </if>
+        <if test="customizable != null ">
+          customizable = #{customizable} AND
+        </if>
+        <if test="price != null ">
+          price = #{price} AND
+        </if>
+        <if test="introduction != null ">
+          introduction = #{introduction} AND
+        </if>
+       </trim>
+    </delete>
+
+    <update id="update" parameterType="com.yy.bjtours.modules.web.dto.TGuideDto">
+       UPDATE t_guide
+       <trim prefix="SET" suffixOverrides=",">
+        <if test="guideNo != null ">
+          guide_no = #{guideNo} ,
+        </if>
+        <if test="serviceName != null ">
+          service_name = #{serviceName} ,
+        </if>
+        <if test="serviceDuration != null ">
+          service_duration = #{serviceDuration} ,
+        </if>
+        <if test="customizable != null ">
+          customizable = #{customizable} ,
+        </if>
+        <if test="price != null ">
+          price = #{price} ,
+        </if>
+        <if test="introduction != null ">
+          introduction = #{introduction} ,
+        </if>
+        update_date=current_timestamp(),
+       </trim>
+       WHERE id = #{id}
+       <if test="updateDate != null" >
+          AND update_date = #{updateDate}
+       </if>
+    </update>
+
+    <select id="query" parameterType="com.yy.bjtours.modules.web.dto.TGuideDto" resultType="TGuideDto">
+       SELECT <include refid="Base_Column_List" />
+       FROM t_guide
+       WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="guideNo != null ">
+          guide_no = #{guideNo} AND
+        </if>
+        <if test="serviceName != null ">
+          service_name = #{serviceName} AND
+        </if>
+        <if test="serviceDuration != null ">
+          service_duration = #{serviceDuration} AND
+        </if>
+        <if test="customizable != null ">
+          customizable = #{customizable} AND
+        </if>
+        <if test="price != null ">
+          price = #{price} AND
+        </if>
+        <if test="introduction != null ">
+          introduction = #{introduction} AND
+        </if>
+       </trim>
+       <if test="orderByStr != null">
+       order by ${orderByStr}
+       </if>
+    </select>
+    <select id="count" parameterType="com.yy.bjtours.modules.web.dto.TGuideDto" resultType="java.lang.Long">
+       SELECT count(*) FROM t_guide
+       WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="guideNo != null ">
+          guide_no = #{guideNo} AND
+        </if>
+        <if test="serviceName != null ">
+          service_name = #{serviceName} AND
+        </if>
+        <if test="serviceDuration != null ">
+          service_duration = #{serviceDuration} AND
+        </if>
+        <if test="customizable != null ">
+          customizable = #{customizable} AND
+        </if>
+        <if test="price != null ">
+          price = #{price} AND
+        </if>
+        <if test="introduction != null ">
+          introduction = #{introduction} AND
+        </if>
+       </trim>
+    </select>
+<!-- ##############################################自定义sql分界线##################################################################### -->
+</mapper>

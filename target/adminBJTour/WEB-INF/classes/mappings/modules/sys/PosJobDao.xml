@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yy.bjtours.modules.sys.dao.PosJobDao">
+	<sql id="posJobColumns">
+		id AS "id",
+		job_date AS "jobDate",
+		job_name AS "jobName",
+		job_type AS "jobType",
+		job_state AS "jobState",
+		collect_state AS "collectState",
+		create_date AS "createDate",
+		update_date AS "updateDate"
+	</sql>
+	<select id="findList-count" resultType="long">
+		SELECT COUNT(1) FROM pos_job 
+		<trim prefix="WHERE" prefixOverrides="AND">
+			<if test="jobDate != null and jobDate != ''">
+				AND job_date = #{jobDate}
+			</if>
+			<if test="jobType != null and jobType != ''">
+				AND job_type = #{jobType}
+			</if>
+			<if test="jobState != null and jobState != ''">
+				AND job_state = #{jobState}
+			</if>
+		</trim>
+		ORDER BY job_date DESC, job_state DESC
+	</select>
+	<select id="findList" resultType="PosJob">
+		SELECT 
+		<include refid="posJobColumns"/> 
+		FROM pos_job 
+		<trim prefix="WHERE" prefixOverrides="AND">
+			<if test="jobDate != null and jobDate != ''">
+				AND job_date = #{jobDate}
+			</if>
+			<if test="jobType != null and jobType != ''">
+				AND job_type = #{jobType}
+			</if>
+			<if test="jobState != null and jobState != ''">
+				AND job_state = #{jobState}
+			</if>
+		</trim>
+		ORDER BY job_date DESC, job_state DESC
+	</select>
+</mapper>

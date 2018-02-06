@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yy.bjtours.modules.web.dto.TCarkindDto">
+
+    <sql id="Base_Column_List" >
+         car_type_no, car_type_name, transfer_price, suitcases_num, carryon_num
+    </sql>
+
+    <insert id="insert" parameterType="com.yy.bjtours.modules.web.dto.TCarkindDto">
+       INSERT into t_carkind
+       <trim prefix="(" suffix=")" suffixOverrides="," >
+        <if test="carTypeNo != null ">
+          car_type_no,
+        </if>
+        <if test="carTypeName != null ">
+          car_type_name,
+        </if>
+        <if test="transferPrice != null ">
+          transfer_price,
+        </if>
+        <if test="suitcasesNum != null ">
+          suitcases_num,
+        </if>
+        <if test="carryonNum != null ">
+          carryon_num,
+        </if>
+       </trim>
+       <trim prefix="values (" suffix=")" suffixOverrides="," >
+        <if test="carTypeNo != null ">
+          #{carTypeNo},
+        </if>
+        <if test="carTypeName != null ">
+          #{carTypeName},
+        </if>
+        <if test="transferPrice != null ">
+          #{transferPrice},
+        </if>
+        <if test="suitcasesNum != null ">
+          #{suitcasesNum},
+        </if>
+        <if test="carryonNum != null ">
+          #{carryonNum},
+        </if>
+       </trim>
+    </insert>
+
+    <delete id="deleteByPrimaryKey" parameterType="com.yy.bjtours.modules.web.dto.TCarkindDto">
+       DELETE FROM t_carkind WHERE id = #{id};
+    </delete>
+
+    <delete id="delete" parameterType="com.yy.bjtours.modules.web.dto.TCarkindDto">
+       DELETE FROM t_carkind WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="carTypeNo != null ">
+          car_type_no = #{carTypeNo} AND
+        </if>
+        <if test="carTypeName != null ">
+          car_type_name = #{carTypeName} AND
+        </if>
+        <if test="transferPrice != null ">
+          transfer_price = #{transferPrice} AND
+        </if>
+        <if test="suitcasesNum != null ">
+          suitcases_num = #{suitcasesNum} AND
+        </if>
+        <if test="carryonNum != null ">
+          carryon_num = #{carryonNum} AND
+        </if>
+       </trim>
+    </delete>
+
+    <update id="update" parameterType="com.yy.bjtours.modules.web.dto.TCarkindDto">
+       UPDATE t_carkind
+       <trim prefix="SET" suffixOverrides=",">
+        <if test="carTypeNo != null ">
+          car_type_no = #{carTypeNo} ,
+        </if>
+        <if test="carTypeName != null ">
+          car_type_name = #{carTypeName} ,
+        </if>
+        <if test="transferPrice != null ">
+          transfer_price = #{transferPrice} ,
+        </if>
+        <if test="suitcasesNum != null ">
+          suitcases_num = #{suitcasesNum} ,
+        </if>
+        <if test="carryonNum != null ">
+          carryon_num = #{carryonNum} ,
+        </if>
+        update_date=current_timestamp(),
+       </trim>
+       WHERE id = #{id}
+       <if test="updateDate != null" >
+          AND update_date = #{updateDate}
+       </if>
+    </update>
+
+    <select id="query" parameterType="com.yy.bjtours.modules.web.dto.TCarkindDto" resultType="TCarkindDto">
+       SELECT <include refid="Base_Column_List" />
+       FROM t_carkind
+       WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="carTypeNo != null ">
+          car_type_no = #{carTypeNo} AND
+        </if>
+        <if test="carTypeName != null ">
+          car_type_name = #{carTypeName} AND
+        </if>
+        <if test="transferPrice != null ">
+          transfer_price = #{transferPrice} AND
+        </if>
+        <if test="suitcasesNum != null ">
+          suitcases_num = #{suitcasesNum} AND
+        </if>
+        <if test="carryonNum != null ">
+          carryon_num = #{carryonNum} AND
+        </if>
+       </trim>
+       <if test="orderByStr != null">
+       order by ${orderByStr}
+       </if>
+    </select>
+    <select id="count" parameterType="com.yy.bjtours.modules.web.dto.TCarkindDto" resultType="java.lang.Long">
+       SELECT count(*) FROM t_carkind
+       WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="carTypeNo != null ">
+          car_type_no = #{carTypeNo} AND
+        </if>
+        <if test="carTypeName != null ">
+          car_type_name = #{carTypeName} AND
+        </if>
+        <if test="transferPrice != null ">
+          transfer_price = #{transferPrice} AND
+        </if>
+        <if test="suitcasesNum != null ">
+          suitcases_num = #{suitcasesNum} AND
+        </if>
+        <if test="carryonNum != null ">
+          carryon_num = #{carryonNum} AND
+        </if>
+       </trim>
+    </select>
+<!-- ##############################################自定义sql分界线##################################################################### -->
+</mapper>

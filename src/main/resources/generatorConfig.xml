@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<classPathEntry
+		location="C:\Users\user\.m2\repository\mysql\mysql-connector-java\5.1.30\mysql-connector-java-5.1.30.jar" />
+	<context id="context1">
+		<!-- 避免生成注解 -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://192.168.1.205:3306/ipos" userId="mysql"
+			password="123456" />
+		<!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer true，把JDBC DECIMAL 和 
+			NUMERIC 类型解析为java.math.BigDecimal -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<!-- targetProject:自动生成代码的位置 -->
+		<javaModelGenerator targetPackage="com.yy.bjtours.modules.entity"
+			targetProject="ipos_admin_yanghj_v1" />
+		<sqlMapGenerator targetPackage="com.yy.bjtours.modules.mapper"
+			targetProject="ipos_admin_yanghj_v1"/>
+		<javaClientGenerator targetPackage="com.yy.bjtours.modules.client"
+			targetProject="ipos_admin_yanghj_v1" type="XMLMAPPER" />
+
+		<table tableName="pos_agent" domainObjectName="PosAgent" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+		<table tableName="pos_basic_info_expand" domainObjectName="PosBasicInfoExpand" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+	</context>
+</generatorConfiguration>

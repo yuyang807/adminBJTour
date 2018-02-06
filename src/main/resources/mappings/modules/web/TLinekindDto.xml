@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yy.bjtours.modules.web.dto.TLinekindDto">
+
+    <sql id="Base_Column_List" >
+         type_no, type_name
+    </sql>
+
+    <insert id="insert" parameterType="com.yy.bjtours.modules.web.dto.TLinekindDto">
+       INSERT into t_linekind
+       <trim prefix="(" suffix=")" suffixOverrides="," >
+        <if test="typeNo != null ">
+          type_no,
+        </if>
+        <if test="typeName != null ">
+          type_name,
+        </if>
+       </trim>
+       <trim prefix="values (" suffix=")" suffixOverrides="," >
+        <if test="typeNo != null ">
+          #{typeNo},
+        </if>
+        <if test="typeName != null ">
+          #{typeName},
+        </if>
+       </trim>
+    </insert>
+
+    <delete id="deleteByPrimaryKey" parameterType="com.yy.bjtours.modules.web.dto.TLinekindDto">
+       DELETE FROM t_linekind WHERE id = #{id};
+    </delete>
+
+    <delete id="delete" parameterType="com.yy.bjtours.modules.web.dto.TLinekindDto">
+       DELETE FROM t_linekind WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="typeNo != null ">
+          type_no = #{typeNo} AND
+        </if>
+        <if test="typeName != null ">
+          type_name = #{typeName} AND
+        </if>
+       </trim>
+    </delete>
+
+    <update id="update" parameterType="com.yy.bjtours.modules.web.dto.TLinekindDto">
+       UPDATE t_linekind
+       <trim prefix="SET" suffixOverrides=",">
+        <if test="typeNo != null ">
+          type_no = #{typeNo} ,
+        </if>
+        <if test="typeName != null ">
+          type_name = #{typeName} ,
+        </if>
+        update_date=current_timestamp(),
+       </trim>
+       WHERE id = #{id}
+       <if test="updateDate != null" >
+          AND update_date = #{updateDate}
+       </if>
+    </update>
+
+    <select id="query" parameterType="com.yy.bjtours.modules.web.dto.TLinekindDto" resultType="TLinekindDto">
+       SELECT <include refid="Base_Column_List" />
+       FROM t_linekind
+       WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="typeNo != null ">
+          type_no = #{typeNo} AND
+        </if>
+        <if test="typeName != null ">
+          type_name = #{typeName} AND
+        </if>
+       </trim>
+       <if test="orderByStr != null">
+       order by ${orderByStr}
+       </if>
+    </select>
+    <select id="count" parameterType="com.yy.bjtours.modules.web.dto.TLinekindDto" resultType="java.lang.Long">
+       SELECT count(*) FROM t_linekind
+       WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="typeNo != null ">
+          type_no = #{typeNo} AND
+        </if>
+        <if test="typeName != null ">
+          type_name = #{typeName} AND
+        </if>
+       </trim>
+    </select>
+<!-- ##############################################自定义sql分界线##################################################################### -->
+</mapper>

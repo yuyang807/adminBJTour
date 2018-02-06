@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="OFF">
+	<appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss.SSS}][%p][%X{sessionId}][%X{uuid}][%X{sip}][%t|%logger{1.}|%M] - %msg%n" />
+		</Console>
+		<!-- <Socket name="socket" host="logs.qianbao.com" port="514" protocol="UDP">
+			<PatternLayout pattern="{{ipos_admin}} [%d{yyyy-MM-dd HH:mm:ss.SSS}][%p][%X{sessionId}][%X{uuid}][%X{sip}][%t|%logger{1.}|%M] - %msg%n" />
+		</Socket> -->
+	</appenders>
+	<loggers>
+		<logger name="com.yy.bjtours" level="DEBUG" additivity="false">
+			<appender-ref ref="RollingFile" />
+			<appender-ref ref="Console"/>
+			<appender-ref ref="socket"/>
+		</logger>
+		<logger name="com.yy.bjtours.common.security.shiro" level="info" additivity="false">
+			<appender-ref ref="RollingFile" />
+			<appender-ref ref="Console"/>
+			<appender-ref ref="socket"/>
+		</logger>
+		<logger name="org.apache.shiro" level="error" additivity="false">
+			<appender-ref ref="RollingFile" />
+			<appender-ref ref="Console"/>
+			<appender-ref ref="socket"/>
+		</logger>
+		<root level="info">
+			<appender-ref ref="Console" />
+			<appender-ref ref="socket"/>
+		</root>
+	</loggers>
+</configuration>

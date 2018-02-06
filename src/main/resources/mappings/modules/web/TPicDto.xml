@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yy.bjtours.modules.web.dao.PicDao">
+
+    <sql id="Base_Column_List" >
+         id,pic_no, pic_name, file_url, md5, is_main, is_main_all
+    </sql>
+
+    <insert id="insert" parameterType="com.yy.bjtours.modules.web.dto.TPicDto">
+       INSERT into t_pic
+       <trim prefix="(" suffix=")" suffixOverrides="," >
+        <if test="picNo != null ">
+          pic_no,
+        </if>
+        <if test="picName != null ">
+          pic_name,
+        </if>
+        <if test="fileUrl != null ">
+          file_url,
+        </if>
+        <if test="md5 != null ">
+          md5,
+        </if>
+        <if test="isMain != null ">
+          is_main,
+        </if>
+        <if test="isMainAll != null ">
+          is_main_all,
+        </if>
+       </trim>
+       <trim prefix="values (" suffix=")" suffixOverrides="," >
+        <if test="picNo != null ">
+          #{picNo},
+        </if>
+        <if test="picName != null ">
+          #{picName},
+        </if>
+        <if test="fileUrl != null ">
+          #{fileUrl},
+        </if>
+        <if test="md5 != null ">
+          #{md5},
+        </if>
+        <if test="isMain != null ">
+          #{isMain},
+        </if>
+        <if test="isMainAll != null ">
+          #{isMainAll},
+        </if>
+       </trim>
+    </insert>
+
+    <delete id="deleteByPrimaryKey" parameterType="com.yy.bjtours.modules.web.dto.TPicDto">
+       DELETE FROM t_pic WHERE id = #{id};
+    </delete>
+
+    <delete id="delete" parameterType="com.yy.bjtours.modules.web.dto.TPicDto">
+       DELETE FROM t_pic WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="picNo != null ">
+          pic_no = #{picNo} AND
+        </if>
+        <if test="picName != null ">
+          pic_name = #{picName} AND
+        </if>
+        <if test="fileUrl != null ">
+          file_url = #{fileUrl} AND
+        </if>
+        <if test="md5 != null ">
+          md5 = #{md5} AND
+        </if>
+        <if test="isMain != null ">
+          is_main = #{isMain} AND
+        </if>
+        <if test="isMainAll != null ">
+          is_main_all = #{isMainAll} AND
+        </if>
+       </trim>
+    </delete>
+
+    <update id="update" parameterType="com.yy.bjtours.modules.web.dto.TPicDto">
+       UPDATE t_pic
+       <trim prefix="SET" suffixOverrides=",">
+        <if test="picNo != null ">
+          pic_no = #{picNo} ,
+        </if>
+        <if test="picName != null ">
+          pic_name = #{picName} ,
+        </if>
+        <if test="fileUrl != null ">
+          file_url = #{fileUrl} ,
+        </if>
+        <if test="md5 != null ">
+          md5 = #{md5} ,
+        </if>
+        <if test="isMain != null ">
+          is_main = #{isMain} ,
+        </if>
+        <if test="isMainAll != null ">
+          is_main_all = #{isMainAll} ,
+        </if>
+       </trim>
+       WHERE id = #{id}
+    </update>
+
+    <select id="query" parameterType="com.yy.bjtours.modules.web.dto.TPicDto" resultType="TPicDto">
+       SELECT <include refid="Base_Column_List" />
+       FROM t_pic
+       WHERE 1=1
+       <trim suffix="" suffixOverrides="AND">
+        <if test="picNo != null ">
+          pic_no = #{picNo} AND
+        </if>
+        <if test="picName != null ">
+          pic_name = #{picName} AND
+        </if>
+        <if test="fileUrl != null ">
+          file_url = #{fileUrl} AND
+        </if>
+        <if test="md5 != null ">
+          md5 = #{md5} AND
+        </if>
+        <if test="isMain != null ">
+          is_main = #{isMain} AND
+        </if>
+        <if test="isMainAll != null ">
+          is_main_all = #{isMainAll} AND
+        </if>
+       </trim>
+       <if test="orderByStr != null">
+       order by ${orderByStr}
+       </if>
+    </select>
+    <select id="count" parameterType="com.yy.bjtours.modules.web.dto.TPicDto" resultType="java.lang.Long">
+       SELECT count(*) FROM t_pic
+       WHERE 1=1
+       <trim suffix="" suffixOverrides="AND">
+        <if test="picNo != null ">
+          pic_no = #{picNo} AND
+        </if>
+        <if test="picName != null ">
+          pic_name = #{picName} AND
+        </if>
+        <if test="fileUrl != null ">
+          file_url = #{fileUrl} AND
+        </if>
+        <if test="md5 != null ">
+          md5 = #{md5} AND
+        </if>
+        <if test="isMain != null ">
+          is_main = #{isMain} AND
+        </if>
+        <if test="isMainAll != null ">
+          is_main_all = #{isMainAll} AND
+        </if>
+       </trim>
+    </select>
+<!-- ##############################################自定义sql分界线##################################################################### -->
+
+	<select id="findPicByLineNo" parameterType="long" resultType="TPicDto">
+		select tp.id pid,tp.pic_no picNo, pic_name, file_url, is_main from t_line_pic tlp left join t_pic tp on tlp.pic_no = tp.pic_no
+		where line_no = #{lineNo}
+	</select>
+	
+	    <update id="updateByPicNo" parameterType="com.yy.bjtours.modules.web.dto.TPicDto">
+       UPDATE t_pic
+       <trim prefix="SET" suffixOverrides=",">
+        <if test="picName != null ">
+          pic_name = #{picName} ,
+        </if>
+        <if test="fileUrl != null ">
+          file_url = #{fileUrl} ,
+        </if>
+        <if test="md5 != null ">
+          md5 = #{md5} ,
+        </if>
+        <if test="isMain != null ">
+          is_main = #{isMain} ,
+        </if>
+        <if test="isMainAll != null ">
+          is_main_all = #{isMainAll} ,
+        </if>
+       </trim>
+       WHERE pic_no = #{picNo}
+    </update>
+    
+     <select id="findAllPicList" parameterType="string" resultType="TPicDto">
+       select tp.id id, tp.pic_no picNo, pic_name picName, is_main isMain,<!--  line_no lineNo, --> 
+       CONCAT(line_no,'/',pic_name) fileUrl from t_line_pic tlp 
+       LEFT JOIN t_pic tp on tp.pic_no = tlp.pic_no
+    </select>
+    
+    <select id="getNewNo" resultType="long">
+    	select max(pic_no)+1 from t_pic
+    </select>
+</mapper>

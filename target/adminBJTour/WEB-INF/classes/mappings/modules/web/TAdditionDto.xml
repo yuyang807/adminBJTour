@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yy.bjtours.modules.web.dao.AdditionDao">
+
+    <sql id="Base_Column_List" >
+         id,add_no, add_value
+    </sql>
+
+    <insert id="insert" parameterType="com.yy.bjtours.modules.web.dto.TAdditionDto">
+       INSERT into t_addition
+       <trim prefix="(" suffix=")" suffixOverrides="," >
+        <if test="addNo != null ">
+          add_no,
+        </if>
+        <if test="addValue != null ">
+          add_value,
+        </if>
+       </trim>
+       <trim prefix="values (" suffix=")" suffixOverrides="," >
+        <if test="addNo != null ">
+          #{addNo},
+        </if>
+        <if test="addValue != null ">
+          #{addValue},
+        </if>
+       </trim>
+    </insert>
+
+    <delete id="deleteByPrimaryKey" parameterType="com.yy.bjtours.modules.web.dto.TAdditionDto">
+       DELETE FROM t_addition WHERE id = #{id};
+    </delete>
+
+    <delete id="delete" parameterType="com.yy.bjtours.modules.web.dto.TAdditionDto">
+       DELETE FROM t_addition WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="addNo != null ">
+          add_no = #{addNo} AND
+        </if>
+        <if test="addValue != null ">
+          add_value = #{addValue} AND
+        </if>
+       </trim>
+    </delete>
+
+    <update id="update" parameterType="com.yy.bjtours.modules.web.dto.TAdditionDto">
+       UPDATE t_addition
+       <trim prefix="SET" suffixOverrides=",">
+        <if test="addNo != null ">
+          add_no = #{addNo} ,
+        </if>
+        <if test="addValue != null ">
+          add_value = #{addValue} ,
+        </if>
+        update_date=current_timestamp(),
+       </trim>
+       WHERE id = #{id}
+       <if test="updateDate != null" >
+          AND update_date = #{updateDate}
+       </if>
+    </update>
+
+    <select id="findList" parameterType="com.yy.bjtours.modules.web.dto.TAdditionDto" resultType="TAdditionDto">
+       SELECT <include refid="Base_Column_List" />
+       FROM t_addition
+       WHERE 1=1
+       <trim suffix="" suffixOverrides="AND">
+        <if test="addNo != null ">
+          add_no = #{addNo} AND
+        </if>
+        <if test="addValue != null ">
+          add_value = #{addValue} AND
+        </if>
+       </trim>
+       <if test="orderByStr != null">
+       order by ${orderByStr}
+       </if>
+    </select>
+    <select id="count" parameterType="com.yy.bjtours.modules.web.dto.TAdditionDto" resultType="java.lang.Long">
+       SELECT count(*) FROM t_addition
+       WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="addNo != null ">
+          add_no = #{addNo} AND
+        </if>
+        <if test="addValue != null ">
+          add_value = #{addValue} AND
+        </if>
+       </trim>
+    </select>
+<!-- ##############################################自定义sql分界线##################################################################### -->
+	<select id="findAddByLineNo" parameterType="long" resultType="TLineAdditionDto">
+		select ta.id, ta.add_no, add_value from t_line_addition tla left join t_addition ta on tla.add_no = ta.add_no
+		where line_no = #{lineNo}
+	</select>
+	
+	    <update id="updateByAddNo" parameterType="com.yy.bjtours.modules.web.dto.TAdditionDto">
+       UPDATE t_addition
+       <trim prefix="SET" suffixOverrides=",">
+        <if test="addValue != null ">
+          add_value = #{addValue} ,
+        </if>
+       </trim>
+       WHERE add_no = #{addNo}
+    </update>
+    
+    <select id="getNewNo" resultType="long">
+    	select max(add_no)+1 from t_addition
+    </select>
+</mapper>

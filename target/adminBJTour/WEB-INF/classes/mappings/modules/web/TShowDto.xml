@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yy.bjtours.modules.web.dto.TShowDto">
+
+    <sql id="Base_Column_List" >
+         show_no, show_name, rows, show_price, remark
+    </sql>
+
+    <insert id="insert" parameterType="com.yy.bjtours.modules.web.dto.TShowDto">
+       INSERT into t_show
+       <trim prefix="(" suffix=")" suffixOverrides="," >
+        <if test="showNo != null ">
+          show_no,
+        </if>
+        <if test="showName != null ">
+          show_name,
+        </if>
+        <if test="rows != null ">
+          rows,
+        </if>
+        <if test="showPrice != null ">
+          show_price,
+        </if>
+        <if test="remark != null ">
+          remark,
+        </if>
+       </trim>
+       <trim prefix="values (" suffix=")" suffixOverrides="," >
+        <if test="showNo != null ">
+          #{showNo},
+        </if>
+        <if test="showName != null ">
+          #{showName},
+        </if>
+        <if test="rows != null ">
+          #{rows},
+        </if>
+        <if test="showPrice != null ">
+          #{showPrice},
+        </if>
+        <if test="remark != null ">
+          #{remark},
+        </if>
+       </trim>
+    </insert>
+
+    <delete id="deleteByPrimaryKey" parameterType="com.yy.bjtours.modules.web.dto.TShowDto">
+       DELETE FROM t_show WHERE id = #{id};
+    </delete>
+
+    <delete id="delete" parameterType="com.yy.bjtours.modules.web.dto.TShowDto">
+       DELETE FROM t_show WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="showNo != null ">
+          show_no = #{showNo} AND
+        </if>
+        <if test="showName != null ">
+          show_name = #{showName} AND
+        </if>
+        <if test="rows != null ">
+          rows = #{rows} AND
+        </if>
+        <if test="showPrice != null ">
+          show_price = #{showPrice} AND
+        </if>
+        <if test="remark != null ">
+          remark = #{remark} AND
+        </if>
+       </trim>
+    </delete>
+
+    <update id="update" parameterType="com.yy.bjtours.modules.web.dto.TShowDto">
+       UPDATE t_show
+       <trim prefix="SET" suffixOverrides=",">
+        <if test="showNo != null ">
+          show_no = #{showNo} ,
+        </if>
+        <if test="showName != null ">
+          show_name = #{showName} ,
+        </if>
+        <if test="rows != null ">
+          rows = #{rows} ,
+        </if>
+        <if test="showPrice != null ">
+          show_price = #{showPrice} ,
+        </if>
+        <if test="remark != null ">
+          remark = #{remark} ,
+        </if>
+        update_date=current_timestamp(),
+       </trim>
+       WHERE id = #{id}
+       <if test="updateDate != null" >
+          AND update_date = #{updateDate}
+       </if>
+    </update>
+
+    <select id="query" parameterType="com.yy.bjtours.modules.web.dto.TShowDto" resultType="TShowDto">
+       SELECT <include refid="Base_Column_List" />
+       FROM t_show
+       WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="showNo != null ">
+          show_no = #{showNo} AND
+        </if>
+        <if test="showName != null ">
+          show_name = #{showName} AND
+        </if>
+        <if test="rows != null ">
+          rows = #{rows} AND
+        </if>
+        <if test="showPrice != null ">
+          show_price = #{showPrice} AND
+        </if>
+        <if test="remark != null ">
+          remark = #{remark} AND
+        </if>
+       </trim>
+       <if test="orderByStr != null">
+       order by ${orderByStr}
+       </if>
+    </select>
+    <select id="count" parameterType="com.yy.bjtours.modules.web.dto.TShowDto" resultType="java.lang.Long">
+       SELECT count(*) FROM t_show
+       WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="showNo != null ">
+          show_no = #{showNo} AND
+        </if>
+        <if test="showName != null ">
+          show_name = #{showName} AND
+        </if>
+        <if test="rows != null ">
+          rows = #{rows} AND
+        </if>
+        <if test="showPrice != null ">
+          show_price = #{showPrice} AND
+        </if>
+        <if test="remark != null ">
+          remark = #{remark} AND
+        </if>
+       </trim>
+    </select>
+<!-- ##############################################自定义sql分界线##################################################################### -->
+</mapper>

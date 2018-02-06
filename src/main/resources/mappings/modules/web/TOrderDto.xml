@@ -1,0 +1,718 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yy.bjtours.modules.web.dto.TOrderDto">
+
+    <sql id="Base_Column_List" >
+         order_no, hotel_name, hotel_tel, hotel_address, arrival_date, a_airplan_num, departure_date, d_airplan_num, start_date, start_time, total_price, adult_num, teenager_num, child_num, baby_num, line_no, line_price, show_no1, show_no2, show_price, pickup_car_type_no, dropoff_car_type_no, car_type_no, car_service_no, car_price, car_day, guide_no, guid_price, guide_day, order_status, order_type, instructions, member_no, create_date, update_date
+    </sql>
+
+    <insert id="insert" parameterType="com.yy.bjtours.modules.web.dto.TOrderDto">
+       INSERT into t_order
+       <trim prefix="(" suffix=")" suffixOverrides="," >
+        <if test="orderNo != null ">
+          order_no,
+        </if>
+        <if test="hotelName != null ">
+          hotel_name,
+        </if>
+        <if test="hotelTel != null ">
+          hotel_tel,
+        </if>
+        <if test="hotelAddress != null ">
+          hotel_address,
+        </if>
+        <if test="arrivalDate != null ">
+          arrival_date,
+        </if>
+        <if test="aAirplanNum != null ">
+          a_airplan_num,
+        </if>
+        <if test="departureDate != null ">
+          departure_date,
+        </if>
+        <if test="dAirplanNum != null ">
+          d_airplan_num,
+        </if>
+        <if test="startDate != null ">
+          start_date,
+        </if>
+        <if test="startTime != null ">
+          start_time,
+        </if>
+        <if test="totalPrice != null ">
+          total_price,
+        </if>
+        <if test="adultNum != null ">
+          adult_num,
+        </if>
+        <if test="teenagerNum != null ">
+          teenager_num,
+        </if>
+        <if test="childNum != null ">
+          child_num,
+        </if>
+        <if test="babyNum != null ">
+          baby_num,
+        </if>
+        <if test="lineNo != null ">
+          line_no,
+        </if>
+        <if test="linePrice != null ">
+          line_price,
+        </if>
+        <if test="showNo1 != null ">
+          show_no1,
+        </if>
+        <if test="showNo2 != null ">
+          show_no2,
+        </if>
+        <if test="showPrice != null ">
+          show_price,
+        </if>
+        <if test="pickupCarTypeNo != null ">
+          pickup_car_type_no,
+        </if>
+        <if test="dropoffCarTypeNo != null ">
+          dropoff_car_type_no,
+        </if>
+        <if test="carTypeNo != null ">
+          car_type_no,
+        </if>
+        <if test="carServiceNo != null ">
+          car_service_no,
+        </if>
+        <if test="carPrice != null ">
+          car_price,
+        </if>
+        <if test="carDay != null ">
+          car_day,
+        </if>
+        <if test="guideNo != null ">
+          guide_no,
+        </if>
+        <if test="guidPrice != null ">
+          guid_price,
+        </if>
+        <if test="guideDay != null ">
+          guide_day,
+        </if>
+        <if test="orderStatus != null ">
+          order_status,
+        </if>
+        <if test="orderType != null ">
+          order_type,
+        </if>
+        <if test="instructions != null ">
+          instructions,
+        </if>
+        <if test="memberNo != null ">
+          member_no,
+        </if>
+        <if test="createDate != null ">
+          create_date,
+        </if>
+        <if test="updateDate != null ">
+          update_date,
+        </if>
+       </trim>
+       <trim prefix="values (" suffix=")" suffixOverrides="," >
+        <if test="orderNo != null ">
+          #{orderNo},
+        </if>
+        <if test="hotelName != null ">
+          #{hotelName},
+        </if>
+        <if test="hotelTel != null ">
+          #{hotelTel},
+        </if>
+        <if test="hotelAddress != null ">
+          #{hotelAddress},
+        </if>
+        <if test="arrivalDate != null ">
+          #{arrivalDate},
+        </if>
+        <if test="aAirplanNum != null ">
+          #{aAirplanNum},
+        </if>
+        <if test="departureDate != null ">
+          #{departureDate},
+        </if>
+        <if test="dAirplanNum != null ">
+          #{dAirplanNum},
+        </if>
+        <if test="startDate != null ">
+          #{startDate},
+        </if>
+        <if test="startTime != null ">
+          #{startTime},
+        </if>
+        <if test="totalPrice != null ">
+          #{totalPrice},
+        </if>
+        <if test="adultNum != null ">
+          #{adultNum},
+        </if>
+        <if test="teenagerNum != null ">
+          #{teenagerNum},
+        </if>
+        <if test="childNum != null ">
+          #{childNum},
+        </if>
+        <if test="babyNum != null ">
+          #{babyNum},
+        </if>
+        <if test="lineNo != null ">
+          #{lineNo},
+        </if>
+        <if test="linePrice != null ">
+          #{linePrice},
+        </if>
+        <if test="showNo1 != null ">
+          #{showNo1},
+        </if>
+        <if test="showNo2 != null ">
+          #{showNo2},
+        </if>
+        <if test="showPrice != null ">
+          #{showPrice},
+        </if>
+        <if test="pickupCarTypeNo != null ">
+          #{pickupCarTypeNo},
+        </if>
+        <if test="dropoffCarTypeNo != null ">
+          #{dropoffCarTypeNo},
+        </if>
+        <if test="carTypeNo != null ">
+          #{carTypeNo},
+        </if>
+        <if test="carServiceNo != null ">
+          #{carServiceNo},
+        </if>
+        <if test="carPrice != null ">
+          #{carPrice},
+        </if>
+        <if test="carDay != null ">
+          #{carDay},
+        </if>
+        <if test="guideNo != null ">
+          #{guideNo},
+        </if>
+        <if test="guidPrice != null ">
+          #{guidPrice},
+        </if>
+        <if test="guideDay != null ">
+          #{guideDay},
+        </if>
+        <if test="orderStatus != null ">
+          #{orderStatus},
+        </if>
+        <if test="orderType != null ">
+          #{orderType},
+        </if>
+        <if test="instructions != null ">
+          #{instructions},
+        </if>
+        <if test="memberNo != null ">
+          #{memberNo},
+        </if>
+        <if test="createDate != null ">
+          #{createDate},
+        </if>
+        <if test="updateDate != null ">
+          #{updateDate},
+        </if>
+       </trim>
+    </insert>
+
+    <delete id="deleteByPrimaryKey" parameterType="com.yy.bjtours.modules.web.dto.TOrderDto">
+       DELETE FROM t_order WHERE id = #{id};
+    </delete>
+
+    <delete id="delete" parameterType="com.yy.bjtours.modules.web.dto.TOrderDto">
+       DELETE FROM t_order WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="orderNo != null ">
+          order_no = #{orderNo} AND
+        </if>
+        <if test="hotelName != null ">
+          hotel_name = #{hotelName} AND
+        </if>
+        <if test="hotelTel != null ">
+          hotel_tel = #{hotelTel} AND
+        </if>
+        <if test="hotelAddress != null ">
+          hotel_address = #{hotelAddress} AND
+        </if>
+        <if test="arrivalDate != null ">
+          arrival_date = #{arrivalDate} AND
+        </if>
+        <if test="aAirplanNum != null ">
+          a_airplan_num = #{aAirplanNum} AND
+        </if>
+        <if test="departureDate != null ">
+          departure_date = #{departureDate} AND
+        </if>
+        <if test="dAirplanNum != null ">
+          d_airplan_num = #{dAirplanNum} AND
+        </if>
+        <if test="startDate != null ">
+          start_date = #{startDate} AND
+        </if>
+        <if test="startTime != null ">
+          start_time = #{startTime} AND
+        </if>
+        <if test="totalPrice != null ">
+          total_price = #{totalPrice} AND
+        </if>
+        <if test="adultNum != null ">
+          adult_num = #{adultNum} AND
+        </if>
+        <if test="teenagerNum != null ">
+          teenager_num = #{teenagerNum} AND
+        </if>
+        <if test="childNum != null ">
+          child_num = #{childNum} AND
+        </if>
+        <if test="babyNum != null ">
+          baby_num = #{babyNum} AND
+        </if>
+        <if test="lineNo != null ">
+          line_no = #{lineNo} AND
+        </if>
+        <if test="linePrice != null ">
+          line_price = #{linePrice} AND
+        </if>
+        <if test="showNo1 != null ">
+          show_no1 = #{showNo1} AND
+        </if>
+        <if test="showNo2 != null ">
+          show_no2 = #{showNo2} AND
+        </if>
+        <if test="showPrice != null ">
+          show_price = #{showPrice} AND
+        </if>
+        <if test="pickupCarTypeNo != null ">
+          pickup_car_type_no = #{pickupCarTypeNo} AND
+        </if>
+        <if test="dropoffCarTypeNo != null ">
+          dropoff_car_type_no = #{dropoffCarTypeNo} AND
+        </if>
+        <if test="carTypeNo != null ">
+          car_type_no = #{carTypeNo} AND
+        </if>
+        <if test="carServiceNo != null ">
+          car_service_no = #{carServiceNo} AND
+        </if>
+        <if test="carPrice != null ">
+          car_price = #{carPrice} AND
+        </if>
+        <if test="carDay != null ">
+          car_day = #{carDay} AND
+        </if>
+        <if test="guideNo != null ">
+          guide_no = #{guideNo} AND
+        </if>
+        <if test="guidPrice != null ">
+          guid_price = #{guidPrice} AND
+        </if>
+        <if test="guideDay != null ">
+          guide_day = #{guideDay} AND
+        </if>
+        <if test="orderStatus != null ">
+          order_status = #{orderStatus} AND
+        </if>
+        <if test="orderType != null ">
+          order_type = #{orderType} AND
+        </if>
+        <if test="instructions != null ">
+          instructions = #{instructions} AND
+        </if>
+        <if test="memberNo != null ">
+          member_no = #{memberNo} AND
+        </if>
+        <if test="createDate != null ">
+          create_date = #{createDate} AND
+        </if>
+        <if test="startCreateDate != null ">
+          create_date >= #{startCreateDate} AND
+        </if>
+        <if test="endCreateDate != null ">
+          create_date <![CDATA[<=]]> #{endCreateDate} AND
+        </if>
+        <if test="updateDate != null ">
+          update_date = #{updateDate} AND
+        </if>
+        <if test="startUpdateDate != null ">
+          update_date >= #{startUpdateDate} AND
+        </if>
+        <if test="endUpdateDate != null ">
+          update_date <![CDATA[<=]]> #{endUpdateDate} AND
+        </if>
+       </trim>
+    </delete>
+
+    <update id="update" parameterType="com.yy.bjtours.modules.web.dto.TOrderDto">
+       UPDATE t_order
+       <trim prefix="SET" suffixOverrides=",">
+        <if test="orderNo != null ">
+          order_no = #{orderNo} ,
+        </if>
+        <if test="hotelName != null ">
+          hotel_name = #{hotelName} ,
+        </if>
+        <if test="hotelTel != null ">
+          hotel_tel = #{hotelTel} ,
+        </if>
+        <if test="hotelAddress != null ">
+          hotel_address = #{hotelAddress} ,
+        </if>
+        <if test="arrivalDate != null ">
+          arrival_date = #{arrivalDate} ,
+        </if>
+        <if test="aAirplanNum != null ">
+          a_airplan_num = #{aAirplanNum} ,
+        </if>
+        <if test="departureDate != null ">
+          departure_date = #{departureDate} ,
+        </if>
+        <if test="dAirplanNum != null ">
+          d_airplan_num = #{dAirplanNum} ,
+        </if>
+        <if test="startDate != null ">
+          start_date = #{startDate} ,
+        </if>
+        <if test="startTime != null ">
+          start_time = #{startTime} ,
+        </if>
+        <if test="totalPrice != null ">
+          total_price = #{totalPrice} ,
+        </if>
+        <if test="adultNum != null ">
+          adult_num = #{adultNum} ,
+        </if>
+        <if test="teenagerNum != null ">
+          teenager_num = #{teenagerNum} ,
+        </if>
+        <if test="childNum != null ">
+          child_num = #{childNum} ,
+        </if>
+        <if test="babyNum != null ">
+          baby_num = #{babyNum} ,
+        </if>
+        <if test="lineNo != null ">
+          line_no = #{lineNo} ,
+        </if>
+        <if test="linePrice != null ">
+          line_price = #{linePrice} ,
+        </if>
+        <if test="showNo1 != null ">
+          show_no1 = #{showNo1} ,
+        </if>
+        <if test="showNo2 != null ">
+          show_no2 = #{showNo2} ,
+        </if>
+        <if test="showPrice != null ">
+          show_price = #{showPrice} ,
+        </if>
+        <if test="pickupCarTypeNo != null ">
+          pickup_car_type_no = #{pickupCarTypeNo} ,
+        </if>
+        <if test="dropoffCarTypeNo != null ">
+          dropoff_car_type_no = #{dropoffCarTypeNo} ,
+        </if>
+        <if test="carTypeNo != null ">
+          car_type_no = #{carTypeNo} ,
+        </if>
+        <if test="carServiceNo != null ">
+          car_service_no = #{carServiceNo} ,
+        </if>
+        <if test="carPrice != null ">
+          car_price = #{carPrice} ,
+        </if>
+        <if test="carDay != null ">
+          car_day = #{carDay} ,
+        </if>
+        <if test="guideNo != null ">
+          guide_no = #{guideNo} ,
+        </if>
+        <if test="guidPrice != null ">
+          guid_price = #{guidPrice} ,
+        </if>
+        <if test="guideDay != null ">
+          guide_day = #{guideDay} ,
+        </if>
+        <if test="orderStatus != null ">
+          order_status = #{orderStatus} ,
+        </if>
+        <if test="orderType != null ">
+          order_type = #{orderType} ,
+        </if>
+        <if test="instructions != null ">
+          instructions = #{instructions} ,
+        </if>
+        <if test="memberNo != null ">
+          member_no = #{memberNo} ,
+        </if>
+        <if test="createDate != null ">
+          create_date = #{createDate} ,
+        </if>
+        update_date=current_timestamp(),
+       </trim>
+       WHERE id = #{id}
+       <if test="updateDate != null" >
+          AND update_date = #{updateDate}
+       </if>
+    </update>
+
+    <select id="query" parameterType="com.yy.bjtours.modules.web.dto.TOrderDto" resultType="TOrderDto">
+       SELECT <include refid="Base_Column_List" />
+       FROM t_order
+       WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="orderNo != null ">
+          order_no = #{orderNo} AND
+        </if>
+        <if test="hotelName != null ">
+          hotel_name = #{hotelName} AND
+        </if>
+        <if test="hotelTel != null ">
+          hotel_tel = #{hotelTel} AND
+        </if>
+        <if test="hotelAddress != null ">
+          hotel_address = #{hotelAddress} AND
+        </if>
+        <if test="arrivalDate != null ">
+          arrival_date = #{arrivalDate} AND
+        </if>
+        <if test="aAirplanNum != null ">
+          a_airplan_num = #{aAirplanNum} AND
+        </if>
+        <if test="departureDate != null ">
+          departure_date = #{departureDate} AND
+        </if>
+        <if test="dAirplanNum != null ">
+          d_airplan_num = #{dAirplanNum} AND
+        </if>
+        <if test="startDate != null ">
+          start_date = #{startDate} AND
+        </if>
+        <if test="startTime != null ">
+          start_time = #{startTime} AND
+        </if>
+        <if test="totalPrice != null ">
+          total_price = #{totalPrice} AND
+        </if>
+        <if test="adultNum != null ">
+          adult_num = #{adultNum} AND
+        </if>
+        <if test="teenagerNum != null ">
+          teenager_num = #{teenagerNum} AND
+        </if>
+        <if test="childNum != null ">
+          child_num = #{childNum} AND
+        </if>
+        <if test="babyNum != null ">
+          baby_num = #{babyNum} AND
+        </if>
+        <if test="lineNo != null ">
+          line_no = #{lineNo} AND
+        </if>
+        <if test="linePrice != null ">
+          line_price = #{linePrice} AND
+        </if>
+        <if test="showNo1 != null ">
+          show_no1 = #{showNo1} AND
+        </if>
+        <if test="showNo2 != null ">
+          show_no2 = #{showNo2} AND
+        </if>
+        <if test="showPrice != null ">
+          show_price = #{showPrice} AND
+        </if>
+        <if test="pickupCarTypeNo != null ">
+          pickup_car_type_no = #{pickupCarTypeNo} AND
+        </if>
+        <if test="dropoffCarTypeNo != null ">
+          dropoff_car_type_no = #{dropoffCarTypeNo} AND
+        </if>
+        <if test="carTypeNo != null ">
+          car_type_no = #{carTypeNo} AND
+        </if>
+        <if test="carServiceNo != null ">
+          car_service_no = #{carServiceNo} AND
+        </if>
+        <if test="carPrice != null ">
+          car_price = #{carPrice} AND
+        </if>
+        <if test="carDay != null ">
+          car_day = #{carDay} AND
+        </if>
+        <if test="guideNo != null ">
+          guide_no = #{guideNo} AND
+        </if>
+        <if test="guidPrice != null ">
+          guid_price = #{guidPrice} AND
+        </if>
+        <if test="guideDay != null ">
+          guide_day = #{guideDay} AND
+        </if>
+        <if test="orderStatus != null ">
+          order_status = #{orderStatus} AND
+        </if>
+        <if test="orderType != null ">
+          order_type = #{orderType} AND
+        </if>
+        <if test="instructions != null ">
+          instructions = #{instructions} AND
+        </if>
+        <if test="memberNo != null ">
+          member_no = #{memberNo} AND
+        </if>
+        <if test="createDate != null ">
+          create_date = #{createDate} AND
+        </if>
+        <if test="startCreateDate != null ">
+          create_date >= #{startCreateDate} AND
+        </if>
+        <if test="endCreateDate != null ">
+          create_date <![CDATA[<=]]> #{endCreateDate} AND
+        </if>
+        <if test="updateDate != null ">
+          update_date = #{updateDate} AND
+        </if>
+        <if test="startUpdateDate != null ">
+          update_date >= #{startUpdateDate} AND
+        </if>
+        <if test="endUpdateDate != null ">
+          update_date <![CDATA[<=]]> #{endUpdateDate} AND
+        </if>
+       </trim>
+       <if test="orderByStr != null">
+       order by ${orderByStr}
+       </if>
+    </select>
+    <select id="count" parameterType="com.yy.bjtours.modules.web.dto.TOrderDto" resultType="java.lang.Long">
+       SELECT count(*) FROM t_order
+       WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="orderNo != null ">
+          order_no = #{orderNo} AND
+        </if>
+        <if test="hotelName != null ">
+          hotel_name = #{hotelName} AND
+        </if>
+        <if test="hotelTel != null ">
+          hotel_tel = #{hotelTel} AND
+        </if>
+        <if test="hotelAddress != null ">
+          hotel_address = #{hotelAddress} AND
+        </if>
+        <if test="arrivalDate != null ">
+          arrival_date = #{arrivalDate} AND
+        </if>
+        <if test="aAirplanNum != null ">
+          a_airplan_num = #{aAirplanNum} AND
+        </if>
+        <if test="departureDate != null ">
+          departure_date = #{departureDate} AND
+        </if>
+        <if test="dAirplanNum != null ">
+          d_airplan_num = #{dAirplanNum} AND
+        </if>
+        <if test="startDate != null ">
+          start_date = #{startDate} AND
+        </if>
+        <if test="startTime != null ">
+          start_time = #{startTime} AND
+        </if>
+        <if test="totalPrice != null ">
+          total_price = #{totalPrice} AND
+        </if>
+        <if test="adultNum != null ">
+          adult_num = #{adultNum} AND
+        </if>
+        <if test="teenagerNum != null ">
+          teenager_num = #{teenagerNum} AND
+        </if>
+        <if test="childNum != null ">
+          child_num = #{childNum} AND
+        </if>
+        <if test="babyNum != null ">
+          baby_num = #{babyNum} AND
+        </if>
+        <if test="lineNo != null ">
+          line_no = #{lineNo} AND
+        </if>
+        <if test="linePrice != null ">
+          line_price = #{linePrice} AND
+        </if>
+        <if test="showNo1 != null ">
+          show_no1 = #{showNo1} AND
+        </if>
+        <if test="showNo2 != null ">
+          show_no2 = #{showNo2} AND
+        </if>
+        <if test="showPrice != null ">
+          show_price = #{showPrice} AND
+        </if>
+        <if test="pickupCarTypeNo != null ">
+          pickup_car_type_no = #{pickupCarTypeNo} AND
+        </if>
+        <if test="dropoffCarTypeNo != null ">
+          dropoff_car_type_no = #{dropoffCarTypeNo} AND
+        </if>
+        <if test="carTypeNo != null ">
+          car_type_no = #{carTypeNo} AND
+        </if>
+        <if test="carServiceNo != null ">
+          car_service_no = #{carServiceNo} AND
+        </if>
+        <if test="carPrice != null ">
+          car_price = #{carPrice} AND
+        </if>
+        <if test="carDay != null ">
+          car_day = #{carDay} AND
+        </if>
+        <if test="guideNo != null ">
+          guide_no = #{guideNo} AND
+        </if>
+        <if test="guidPrice != null ">
+          guid_price = #{guidPrice} AND
+        </if>
+        <if test="guideDay != null ">
+          guide_day = #{guideDay} AND
+        </if>
+        <if test="orderStatus != null ">
+          order_status = #{orderStatus} AND
+        </if>
+        <if test="orderType != null ">
+          order_type = #{orderType} AND
+        </if>
+        <if test="instructions != null ">
+          instructions = #{instructions} AND
+        </if>
+        <if test="memberNo != null ">
+          member_no = #{memberNo} AND
+        </if>
+        <if test="createDate != null ">
+          create_date = #{createDate} AND
+        </if>
+        <if test="startCreateDate != null ">
+          create_date >= #{startCreateDate} AND
+        </if>
+        <if test="endCreateDate != null ">
+          create_date <![CDATA[<=]]> #{endCreateDate} AND
+        </if>
+        <if test="updateDate != null ">
+          update_date = #{updateDate} AND
+        </if>
+        <if test="startUpdateDate != null ">
+          update_date >= #{startUpdateDate} AND
+        </if>
+        <if test="endUpdateDate != null ">
+          update_date <![CDATA[<=]]> #{endUpdateDate} AND
+        </if>
+       </trim>
+    </select>
+<!-- ##############################################自定义sql分界线##################################################################### -->
+</mapper>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yy.bjtours.modules.web.dao.LineAdditionDao">
+
+    <sql id="Base_Column_List" >
+         line_no, add_no
+    </sql>
+
+    <insert id="insert" parameterType="com.yy.bjtours.modules.web.dto.TLineAdditionDto">
+       INSERT into t_line_addition
+       <trim prefix="(" suffix=")" suffixOverrides="," >
+        <if test="lineNo != null ">
+          line_no,
+        </if>
+        <if test="addNo != null ">
+          add_no,
+        </if>
+       </trim>
+       <trim prefix="values (" suffix=")" suffixOverrides="," >
+        <if test="lineNo != null ">
+          #{lineNo},
+        </if>
+        <if test="addNo != null ">
+          #{addNo},
+        </if>
+       </trim>
+    </insert>
+
+    <delete id="deleteByPrimaryKey" parameterType="com.yy.bjtours.modules.web.dto.TLineAdditionDto">
+       DELETE FROM t_line_addition WHERE id = #{id};
+    </delete>
+
+    <delete id="delete" parameterType="com.yy.bjtours.modules.web.dto.TLineAdditionDto">
+       DELETE FROM t_line_addition WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="lineNo != null ">
+          line_no = #{lineNo} AND
+        </if>
+        <if test="addNo != null ">
+          add_no = #{addNo} AND
+        </if>
+       </trim>
+    </delete>
+
+    <update id="update" parameterType="com.yy.bjtours.modules.web.dto.TLineAdditionDto">
+       UPDATE t_line_addition
+       <trim prefix="SET" suffixOverrides=",">
+        <if test="lineNo != null ">
+          line_no = #{lineNo} ,
+        </if>
+        <if test="addNo != null ">
+          add_no = #{addNo} ,
+        </if>
+       </trim>
+       WHERE id = #{id}
+    </update>
+
+    <select id="query" parameterType="com.yy.bjtours.modules.web.dto.TLineAdditionDto" resultType="TLineAdditionDto">
+       SELECT <include refid="Base_Column_List" />
+       FROM t_line_addition
+       WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="lineNo != null ">
+          line_no = #{lineNo} AND
+        </if>
+        <if test="addNo != null ">
+          add_no = #{addNo} AND
+        </if>
+       </trim>
+       <if test="orderByStr != null">
+       order by ${orderByStr}
+       </if>
+    </select>
+    <select id="count" parameterType="com.yy.bjtours.modules.web.dto.TLineAdditionDto" resultType="java.lang.Long">
+       SELECT count(*) FROM t_line_addition
+       WHERE 
+       <trim suffix="" suffixOverrides="AND">
+        <if test="lineNo != null ">
+          line_no = #{lineNo} AND
+        </if>
+        <if test="addNo != null ">
+          add_no = #{addNo} AND
+        </if>
+       </trim>
+    </select>
+<!-- ##############################################自定义sql分界线##################################################################### -->
+
+</mapper>
